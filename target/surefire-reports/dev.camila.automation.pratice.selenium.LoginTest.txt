@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: dev.camila.automation.pratice.selenium.LoginTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.505 s <<< FAILURE! - in dev.camila.automation.pratice.selenium.LoginTest
+dev.camila.automation.pratice.selenium.LoginTest.test  Time elapsed: 0.504 s  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 106
+Current browser version is 126.0.6478.126 with binary path /usr/bin/google-chrome 
+Host info: host: 'Nina', ip: '127.0.0.1'
+Build info: version: '4.5.0', revision: 'fe167b119a'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.6.25-amd64-desktop-hwe', java.version: '21.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}}]
+	at dev.camila.automation.pratice.selenium.LoginTest.setUp(LoginTest.java:18)
+

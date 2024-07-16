@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: dev.camila.automation.pratice.selenium.tests.RegisterPageTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 1.559 s <<< FAILURE! - in dev.camila.automation.pratice.selenium.tests.RegisterPageTest
+dev.camila.automation.pratice.selenium.tests.RegisterPageTest.test  Time elapsed: 1.005 s  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 106
+Current browser version is 126.0.6478.126 with binary path /usr/bin/google-chrome 
+Host info: host: 'Nina', ip: '127.0.0.1'
+Build info: version: '4.5.0', revision: 'fe167b119a'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.6.25-amd64-desktop-hwe', java.version: '21.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}}]
+	at dev.camila.automation.pratice.selenium.tests.RegisterPageTest.setUp(RegisterPageTest.java:16)
+
+dev.camila.automation.pratice.selenium.tests.RegisterPageTest.test2  Time elapsed: 0.553 s  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 106
+Current browser version is 126.0.6478.126 with binary path /usr/bin/google-chrome 
+Host info: host: 'Nina', ip: '127.0.0.1'
+Build info: version: '4.5.0', revision: 'fe167b119a'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.6.25-amd64-desktop-hwe', java.version: '21.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}}]
+	at dev.camila.automation.pratice.selenium.tests.RegisterPageTest.setUp(RegisterPageTest.java:16)
+
