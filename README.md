@@ -14,3 +14,13 @@
 </ol>
 
 
+Contribuindo
+
+Este repositório foi criado para fins de estudo, então contribua com ele.
+Qualquer melhoria que voces queriam fazer, por favor fazer um fork do projeto.
+
+Se possível:
+
+⭐️ Star o projeto
+
+🐛 Encontrar e relatar issues
