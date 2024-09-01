@@ -1,27 +1,31 @@
 package dev.automacao.selenium.pages;
 
+import dev.automacao.selenium.elements.LoginElementMaps;
+import dev.automacao.selenium.utils.ConfigReader;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage {
-	//Locators
-	private By username = By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input");
-	private By password = By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input");
-	private By btnLogin = By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button");
-	private By dashboad = By.tagName("h6");
-	
-	
-	public void signin() {
-		if(super.isDisplayed(username)) {
-			super.type("Admin", username);
-			super.type("admin123", password);
-			super.click(btnLogin);
-		} else {
-			System.out.println("Usuario inexistente");
-		}
-	}
-	
-	public String getMyAccountMessage() {
-		return super.getText(dashboad);
-	}
+public class LoginPage extends LoginElementMaps {
 
+    private LoginElementMaps loginElements;
+    private ConfigReader config;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        loginElements = new LoginElementMaps();
+        PageFactory.initElements(driver, loginElements);
+        config = new ConfigReader(); // Inicializa o ConfigReader
+    }
+
+    public LoginPage realizarLogin(){
+        String username = config.getProperty("usuario.nome"); // Obtém o nome de usuário do arquivo de propriedades
+        String password = config.getProperty("usuario.senha"); // Obtém a senha do arquivo de propriedades
+
+        loginElements.username.sendKeys(username); // Preenche o campo de usuário
+        loginElements.password.sendKeys(password); // Preenche o campo de senha
+        loginElements.btnLogin.click(); // Clica no botão de login
+
+        return new LoginPage(driver); // Retorna uma nova instância da HomePage após o loginv
+    }
 }
