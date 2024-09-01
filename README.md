@@ -1,26 +1,94 @@
-<h1>Automação de Testes com Selenium WebDriver e Java</h1>
+# Projeto de Automação com Selenium Grid e Testes
 
-<p>Conheça o Selenium WebDriver, a principal ferramenta de automação de páginas Web. Nesse contexto, explore a linguagem de programação Java e entenda como o Selenium automatiza as ações diretamente em seu browser.</p>
+Este documento fornece uma visão geral detalhada sobre o desenvolvimento e a configuração de automação de testes usando Selenium Grid, Java, Spring Boot, PostgreSQL e outras tecnologias discutidas. Inclui a configuração do Selenium Grid, a criação de testes automatizados, e a configuração de ambientes de teste.
 
-<p align="center">❗❗ O SITE <a href="https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index">https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
+## Índice
 
-<h3>Features</h3>
-<ol>
-	<li>Configuração de Testes Selenium WebDriver + Java</li>
-	<li><code>WebDriver</code></li>
-	<li><code>Actions</code></li>
-	<li><code>WebDriverWait</code></li>
-	<li><code>Select</code></li>
-</ol>
+1. [Visão Geral do Projeto](#visão-geral-do-projeto)
+2. [Configuração do Selenium Grid](#configuração-do-selenium-grid)
+    - [Instalação do Java](#instalação-do-java)
+    - [Download do Selenium Server](#download-do-selenium-server)
+    - [Configuração do Hub](#configuração-do-hub)
+    - [Configuração do Node](#configuração-do-node)
+    - [Configuração Avançada do Node (Opcional)](#configuração-avançada-do-node-opcional)
+    - [Automatização da Inicialização](#automatização-da-inicialização)
+3. [Configuração do Projeto de Testes](#configuração-do-projeto-de-testes)
+    - [Estrutura do Projeto](#estrutura-do-projeto)
+    - [Testes com Selenium e Java](#testes-com-selenium-e-java)
+    - [Criação de Page Objects](#criação-de-page-objects)
+    - [Implementação de DSL (Domain-Specific Language)](#implementação-de-dsl-domain-specific-language)
+    - [Integração com Cucumber](#integração-com-cucumber)
+4. [Configuração do Ambiente de Testes](#configuração-do-ambiente-de-testes)
+    - [Arquivo `properties`](#arquivo-properties)
+    - [Configuração de Logs e Evidências](#configuração-de-logs-e-evidências)
+5. [Referências e Recursos](#referências-e-recursos)
 
+## Visão Geral do Projeto
 
-Contribuindo
+Este projeto inclui a configuração e execução de testes automatizados utilizando Selenium Grid para distribuição e paralelização dos testes, bem como a configuração de testes para sistemas desenvolvidos com Java, Spring Boot, PostgreSQL e outras tecnologias. A automação inclui a criação de testes para páginas de login, funcionalidades específicas e integração com o Cucumber para testes de aceitação.
 
-Este repositório foi criado para fins de estudo, então contribua com ele.
-Qualquer melhoria que voces queriam fazer, por favor fazer um fork do projeto.
+## Configuração do Selenium Grid
 
-Se possível:
+### Instalação do Java
 
-⭐️ Star o projeto
+O Selenium Grid requer o Java para ser executado. Instale o Java com os seguintes comandos:
 
-🐛 Encontrar e relatar issues
+```bash
+sudo apt update
+sudo apt install openjdk-11-jdk
+```
+Download do Selenium Server
+Baixe o arquivo JAR do Selenium Server: 
+
+```bash
+wget https://selenium-release.storage.googleapis.com/4.20.0/selenium-server-4.20.0.jar
+``` 
+Configuração do Hub
+Inicie o Hub do Selenium Grid com o seguinte comando:
+
+```bash
+java -jar selenium-server-4.20.0.jar hub
+```
+O Hub estará disponível em http://localhost:4444.
+
+Configuração do Node
+Para adicionar um Node, execute o seguinte comando (em uma máquina diferente ou no mesmo servidor):
+
+```bash
+java -jar selenium-server-4.20.0.jar node --hub http://localhost:4444/grid/register
+```
+Configuração Avançada do Node (Opcional)
+Crie um arquivo nodeConfig.json para personalizar as capacidades do Node:
+
+```bash
+{
+  "capabilities": [
+    {
+      "browserName": "chrome",
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver"
+    },
+    {
+      "browserName": "firefox",
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver"
+    }
+  ],
+  "configuration": {
+    "nodeTimeout": 120,
+    "hub": "http://localhost:4444/grid/register",
+    "maxSession": 5,
+    "port": 5555,
+    "register": true,
+    "registerCycle": 5000,
+    "unregisterIfStillDownAfter": 10000,
+    "hubPort": 4444,
+    "hubHost": "localhost"
+  }
+}
+``` 
+Inicie o Node com o arquivo de configuração:
+
+````bash
+java -jar selenium-server-4.20.0.jar node --node-config nodeConfig.json
+```
